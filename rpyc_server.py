@@ -1,13 +1,18 @@
 import rpyc
 import subprocess
 import nidaqmx
-from nidaqmx.types import CtrTime
 from nixnet_custom import nixnet
+from nidaqmx.constants import FuncGenType
+from nidaqmx.constants import AcquisitionType
+from nidaqmx.constants import TerminalConfiguration
 
 class MyService(rpyc.Service):
-   exposed_nidaqmx   = nidaqmx
-   exposed_CtrTime   = CtrTime
-   exposed_nixnet    = nixnet
+   exposed_nidaqmx                 = nidaqmx
+   exposed_nixnet                  = nixnet
+   exposed_AcquisitionType         = AcquisitionType
+   exposed_TerminalConfiguration   = TerminalConfiguration
+   exposed_FuncGenType             = FuncGenType
+
 if __name__ == "__main__":
    try:
       from rpyc.utils.server import ThreadedServer
